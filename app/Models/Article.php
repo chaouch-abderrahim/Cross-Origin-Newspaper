@@ -27,4 +27,5 @@ class Article extends Model
     {
         return $this->belongsTo(Journal::class);
     }
+    //Les fonctions d'ajout, de suppression et de modification sont disponibles par défaut car le modèle hérite d'Eloquent.
 }

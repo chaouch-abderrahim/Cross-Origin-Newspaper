@@ -23,4 +23,7 @@ class Journal extends Model
     {
         return $this->hasMany(Article::class);
     }
+        
+    //Les fonctions d'ajout, de suppression et de modification sont disponibles par défaut car le modèle hérite d'Eloquent.
+
 }
