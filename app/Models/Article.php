@@ -17,6 +17,7 @@ class Article extends Model
         'publication_date',
         'category',
         'content',
+        'source',
         'journal_id',
     ];
 
