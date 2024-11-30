@@ -1,11 +1,12 @@
 <?php 
 
-namespace App\Services;
+namespace App\Services\Strategies;
 
+use App\Services\Strategies\JournalStrategy;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
-class LeMondeService
+class  LeMondeStrategy implements JournalStrategy
 {
     public function getTodayArticles()
     {

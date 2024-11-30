@@ -9,6 +9,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/journals', [JournalController::class, 'indexJson'])->name('journals.index.json');
 Route::get('/articles', [ArticleController::class, 'indexJson'])->name('articles.index.json');
-Route::get('/lemonde', [LeMondeController::class, 'todayArticlesJson']);
+Route::get('/lemonde', [ArticleController::class, 'ArticlesLeMondJson']);
 
 

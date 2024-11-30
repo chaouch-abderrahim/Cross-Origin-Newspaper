@@ -11,4 +11,4 @@ use Illuminate\Support\Facades\Route;
     });
    // Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index'); //pour affichier les articles  vient de la base de donnée 
     Route::get('/journals', [JournalController::class, 'index'])->name('journals.index');
-    Route::get('/articles', [LeMondeController::class, 'todayArticles']);
+    Route::get('/articles', [ArticleController::class, 'ArticlesLeMonde']);
