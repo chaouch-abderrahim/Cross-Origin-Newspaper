@@ -46,8 +46,12 @@
     <script>
         $(document).ready(function() {
             $('#articlesTable').DataTable({
-                "ordering": false // J'ai désactivé le tri parce que j'ai envoyé les données triées à partir du contrôleur.
+                "ordering": true // activation  de filtre 
             });
+            /*
+            pour filtrer par categorie 
+            $('#categoryFilter').on('change', function() { var category = $(this).val(); table.column(3).search(category).draw(); })
+            */
         });
     </script>
 </body>
