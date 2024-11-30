@@ -7,10 +7,17 @@
     <title>Article</title>
 </head>
 <body>
-    <h1>Liste des articles</h1>
+  
+    <h1>Liste des articles de Journal Le Monde </h1>
     <ul>
-        @foreach ($articles as $article)
-            <li>{{ $article->title }}</li>
+        @foreach ($articlesLeMonde as $article)
+        <li>
+            <strong>{{ $article->title }}</strong><br>
+            Auteur : {{ $article->author }}<br>
+            Catégorie : {{ $article->category }}<br>
+            Date de publication : {{ \Carbon\Carbon::parse($article->published_at)->format('d-m-Y H:i') }}<br>
+            Contenu : {{ $article->content }}
+        </li>
         @endforeach
     </ul>
 </body>
