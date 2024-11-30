@@ -11,7 +11,8 @@ class  LeMondeStrategy implements JournalStrategy
     public function getTodayArticles()
     {
         try {
-            $date = now()->subDay()->format('Y-m-d');
+            $date = now('Europe/Paris')->subDay()->format('Y-m-d');
+        
             $url = "https://api-catch-the-dev.unit41.fr/lemonde?date={$date}";
             //$url = "https://api-catch-the-dev.unit41.fr/lemonde?date=2024-11-29";
             // Récupération des articles

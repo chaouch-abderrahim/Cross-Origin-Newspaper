@@ -35,13 +35,13 @@ class AutoLeMondeArticles extends Command
 
             foreach ($articles as $article) {
                 Article::updateOrCreate(
-                    ['title' => $article['title'], 'published_at' => $article['published_at']],
+                    ['title' => $article['title'], 'publication_date' => $article['published_at']],
                     [
                         'author' => $article['author'],
                         'category' => $article['category'],
                         'content' => $article['content'],
                         'source' => 'Le Monde',
-                        'journal_id' => 2,
+                        'journal_id' => 1,
                     ]
                 );
                 Log::info('Article enregistré ou mis à jour', ['title' => $article['title'], 'published_at' => $article['published_at']]);

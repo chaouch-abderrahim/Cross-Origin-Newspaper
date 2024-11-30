@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 </head>
 <body>
-    <!--J'ai travaillé dès le début avec DataTable, parce que j'ai essayé de travailler challenge par challenge. 
-        Je ne sais pas si j'ai le droit ou pas d'utiliser DataTable.
-    -->
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Liste des articles </h1>
-
-        @if ($articlesLeMonde->isEmpty())
+        <h1 class="text-center mb-4">Liste des articles</h1>
+        @if (session('success')) 
+            <div class="alert alert-success"> {{ session('success') }}
+            </div> 
+        @endif
+        @if ($articles->isEmpty())
             <p class="text-center">Aucun article disponible.</p>
         @else
             <table id="articlesTable" class="table table-success table-striped table-bordered">
@@ -28,10 +28,11 @@
                         <th>Catégorie</th>
                         <th>Date de publication</th>
                         <th>Contenu</th>
+                        <th>Commentaires</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($articlesLeMonde as $article)
+                    @foreach ($articles as $article)
                         <tr>
                             <td>{{ $article->id }}</td>
                             <td>{{ $article->title }}</td>
@@ -39,6 +40,21 @@
                             <td>{{ $article->category ?? 'Non spécifiée' }}</td>
                             <td>{{ \Carbon\Carbon::parse($article->published_at)->format('d-m-Y H:i') }}</td>
                             <td>{{ $article->content }}</td>
+                            <td>
+                                <form action="{{ route('comments.store') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="article_id" value="{{ $article->id }}">
+                                    <div class="form-group">
+                                        <label for="author">Auteur :</label>
+                                        <input type="text" name="author" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="content">Commentaire :</label>
+                                        <textarea name="content" class="form-control" required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Ajouter un commentaire</button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
