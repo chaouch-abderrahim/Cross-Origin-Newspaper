@@ -15,7 +15,7 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::all(); 
-        return view('articles.index', compact('articles')); 
+        return view('dashboard', compact('articles')); 
     }
    //// Pour afficher les données de la base de données
  
@@ -35,7 +35,7 @@ class ArticleController extends Controller
             $articles = $service->getTodayArticles()->getData(); // Récupère les données JSON en tableau
             $articlesLeMonde = collect($articles)->sortByDesc('published_at');
               // Passer les articles à la vue
-            return view('articles.index', compact('articlesLeMonde')); 
+            return view('dashboard', compact('articlesLeMonde')); 
             
         } catch (\Exception $e) {
             return response()->json(['error' => 'Erreur : ' . $e->getMessage()], 500);

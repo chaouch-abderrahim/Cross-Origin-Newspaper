@@ -22,7 +22,7 @@ class CommentController extends Controller
             'content' => $validated['content'],
         ]);
 
-        return redirect()->route('articles.index')->with('success', 'Commentaire ajouté avec succès.');
+        return redirect()->route('dashboard')->with('success', 'Commentaire ajouté avec succès.');
     }
 }
 
